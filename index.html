@@ -63,9 +63,10 @@
 				</textarea>
 				<div id="tableContainer">
 <style>
-.tableWrapper {
+#tableWrapper {
 width: 100%;
-overflow-x: scroll;
+overflow-y: auto;
+_overflow: auto;
 }
 
 .tableGen {
@@ -77,12 +78,32 @@ margin-bottom: 20px;
 border-bottom: 1px solid #ccc;
 padding: 5px;
 }
-.tableGen tr:first-child td {
+.tableGen tbody tr:first-child {
 background-color: #EEE;
 border-bottom: 1px solid #ccc;
 font-weight: bold;
 padding: 5px;
 text-align: left;
+}
+.tableGen tr.hlDeepBlue {
+background-color: #0F2236 !important;
+color: #fff !important;
+font-weight: bold !important;
+}
+.tableGen tr.hlOrange {
+background-color: #ef7f1b !important;
+color: #fff !important;
+font-weight: bold !important;
+}
+.tableGen tr.hlBlue {
+background-color: #0a7dac !important;
+color: #fff !important;
+font-weight: bold !important;
+}
+.tableGen tr.hlLightBlue {
+background-color: #dceefa !important;
+color: #0a7dac !important;
+font-weight: bold !important;
 }
 .tableGen tr td {
 border-bottom: 1px solid #ccc;
