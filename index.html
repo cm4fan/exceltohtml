@@ -4,7 +4,7 @@
 		body {
 		padding: 40px;
 		font-family: Arial, sans-serif;
-		font-size: 13px;
+		font-size: 14px;
 		color: #000;
 		background-color: #fff;
 		}
@@ -25,18 +25,24 @@
 			margin: 0 0 20px;
 		}
 		
-			.wrapper {
+		.note {
+			font-size: 12px;
+			margin: 0 0 20px;
+			color: #cc0000;
+		}
+		
+		.wrapper {
 			display: flex;
 			flex-flow: row wrap;	
 			}
 			
-			.main {
-			width: 400px;
+		.main {
+			width: 350px;
 			padding: 0 30px;
 			}
 			
-			.result {
-			width: 560px;
+		.result {
+			width: 600px;
 			padding: 0 30px;
 			}
 			
@@ -45,38 +51,48 @@
 	<body>
 		<div class="wrapper">
 			<div class="main">
-				<textarea id="csv" placeholder="Вставьте содержимое из Гугл Таблицы" style="width: 400px; height: 300px"></textarea>
+				<h3>1. Вставьте из Гугл Таблицы или Экселя</h3>
+				<div class="note">Пожалуйста, не оставляйте пустые ячейки</div>
+				<textarea id="csv" style="width: 100%; height: 300px"></textarea>
 				<br/>
-				<input type="button" class="generateButton" value="Сгенерировать код таблицы" onclick="createTable()" >
+				<input type="button" class="generateButton" value="2. Сгенерировать код таблицы" onclick="createTable()">
 			</div>
 			<div class="result">
-				<h3>Скопируйте код и вставьте в админку</h3>
-				<textarea placeholder="Здесь появится HTML код" style="width: 560px; height: 800px" id="output"></textarea>
+				<h3>3. Скопируйте код и вставьте в админку</h3>
+				<textarea placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
 				</textarea>
-				<div id="tableWrapper">
+				<div id="tableContainer">
 <style>
-.tableGen {
+.tableWrapper {
 width: 100%;
+overflow-x: scroll;
+}
+
+.tableGen {
+table-layout: fixed;
 border-collapse: collapse;
-margin-bottom: 30px;
+margin-bottom: 20px;
 }
 .tableGen tr {
 border-bottom: 1px solid #ccc;
-padding: 8px;
+padding: 5px;
 }
 .tableGen tr:first-child td {
 background-color: #EEE;
 border-bottom: 1px solid #ccc;
 font-weight: bold;
-padding: 8px;
+padding: 5px;
 text-align: left;
 }
 .tableGen tr td {
 border-bottom: 1px solid #ccc;
-padding: 8px;
+padding: 5px;
 text-align: left;
 }
 </style>
+
+<div id="tableWrapper">
+</div>
 </div>
 
 			</div>
@@ -100,7 +116,7 @@ text-align: left;
 			var myTbody = document.createElement("tbody");
 		
 			// Loop over the rows
-		    for (i=0; i<excelRow.length - 1; i++) {
+		    for (i=0; i<excelRow.length; i++) {
 				// create a row in the HTML table
 				var myRow = document.createElement("tr");
 		
@@ -116,11 +132,14 @@ text-align: left;
 				myTbody.appendChild(myRow);
 			}
 				myTable.appendChild(myTbody);
+		    
+		    var myNode = document.getElementById("tableWrapper");
+			while (myNode.firstChild) {
+    		myNode.removeChild(myNode.firstChild);
+			}		    		
 		    document.getElementById('tableWrapper').appendChild(myTable);
-			var output = document.getElementById("tableWrapper").innerHTML;
+			var output = document.getElementById("tableContainer").innerHTML;
 			document.getElementById("output").value = output;
 		}
-		
-		
 	</script>
 </html>
