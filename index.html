@@ -15,10 +15,16 @@
 		padding: 10px;
 		}
 		
-		.generateButton, .refreshButton {
+		.generateButton {
 		margin-bottom: 30px;
 		padding: 10px;
-		font-size: 16px;		
+		font-size: 16px;
+		width: 100%;		
+		}
+		
+		.helpNotes {
+		margin: 0 0 10px;
+		font-size: 12px;
 		}
 		
 		h3 {
@@ -52,13 +58,18 @@
 		<div class="wrapper">
 			<div class="main">
 				<h3>1. Вставьте из Гугл Таблицы или Экселя</h3>
-				<div class="note">Пожалуйста, не оставляйте пустые ячейки</div>
+				<div class="note">Пожалуйста, не оставляйте пустые ячейки и переносы строк</div>
 				<textarea id="csv" style="width: 100%; height: 300px"></textarea>
 				<br/>
 				<input type="button" class="generateButton" value="2. Сгенерировать код таблицы" onclick="createTable()">
 			</div>
 			<div class="result">
 				<h3>3. Скопируйте код и вставьте в админку в режиме HTML</h3>
+				<details class="helpNotes">
+  <summary>Помощь в форматировании</summary>
+  <p> - если редактировать код в этом поле, таблица снизу обновляется автоматически</p>
+  <p> - используйте классы hlDeepBlue, hlBlue, hlLightBlue и hlOrange для раскраски строк. Например, <tr class="hlDeepBlue"></p>
+</details>
 				<textarea onkeyup="refreshTable()" placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
 				</textarea>
 				<div id="tableContainer">
