@@ -1,74 +1,126 @@
 <html>
-<head>
-	<style>
-		.tableGen {
-			width: 80%;
-			border-collapse: collapse;
-		}
-		.tableGen tr {
-			border-bottom: 1px solid #ddd;
-			padding: 8px;
-		}
-		/*This will style the header row!*/
-		.tableGen tr:first-child td {
-			background-color: #EEE;
-			border: 1px solid #ddd;
-			font-weight: bold;
-			padding: 8px;
-			text-align: left;
+	<head>
+		<style>
+		body {
+		padding: 40px;
+		font-family: Arial, sans-serif;
+		font-size: 13px;
+		color: #000;
+		background-color: #fff;
 		}
 		
-		.tableGen tr td {
-			border: 1px solid #ddd;
-			padding: 8px;
-			text-align: left;
+		textarea {
+		margin-bottom: 20px;
+		font-size: 13px;
+		padding: 10px;
 		}
-	</style>
-<script language="javascript">
-function createTable() {
-    // Get the data
-	var excelData = document.getElementById('csv').value;
-
-    // split into rows
-    excelRow = excelData.split(String.fromCharCode(10));
-    // split rows into columns
-    for (i=0; i<excelRow.length; i++) {
-        excelRow[i] = excelRow[i].split(String.fromCharCode(9));
-    }
-
-	// start to create the HTML table
-	var myTable = document.createElement("table");
-	myTable.className = "tableGen";
-	var myTbody = document.createElement("tbody");
-
-	// Loop over the rows
-    for (i=0; i<excelRow.length - 1; i++) {
-		// create a row in the HTML table
-		var myRow = document.createElement("tr");
-
-		// Loop over the columns and add TD to the TR
-		for (j=0; j<excelRow[i].length; j++) {
-			// Loop over the row columns
-			if (excelRow[i][j].length != 0) {
-					var myCell = document.createElement("td");
-					myCell.innerHTML = excelRow[i][j];
-            }
-			myRow.appendChild(myCell);
+		
+		.generateButton {
+		margin-bottom: 30px;
+		padding: 10px;
+		font-size: 16px;		
 		}
-		myTbody.appendChild(myRow);
-	}
-		myTable.appendChild(myTbody);
-    document.body.appendChild(myTable);
-	// console.log(myTable)
+		
+		h3 {
+			margin: 0 0 20px;
+		}
+		
+			.wrapper {
+			display: flex;
+			flex-flow: row wrap;	
+			}
+			
+			.main {
+			width: 400px;
+			padding: 0 30px;
+			}
+			
+			.result {
+			width: 560px;
+			padding: 0 30px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="main">
+				<textarea id="csv" placeholder="Вставьте содержимое из Гугл Таблицы" style="width: 400px; height: 300px"></textarea>
+				<br/>
+				<input type="button" class="generateButton" value="Сгенерировать код таблицы" onclick="createTable()" >
+			</div>
+			<div class="result">
+				<h3>Скопируйте код и вставьте в админку</h3>
+				<textarea placeholder="Здесь появится HTML код" style="width: 560px; height: 800px" id="output"></textarea>
+				</textarea>
+				<div id="tableWrapper">
+<style>
+.tableGen {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 30px;
 }
-</script>
-</head>
-<body>
-<p>
-	On your XLSX document "Select All" then "copy" the data, come to this page, put focus on the &lt;textarea> box and "paste" the text in. In some instance (large data sets) this might take a couple of seconds.
-	Once there simply click the button to product the table.
-	</p>
-<textarea id="csv" placeholder="Paste XLSX content here" style="width: 300px; height: 100px;"></textarea><br/>
-<input type="button" value="Create HTML Table from XLSX content" onclick="createTable()" >
-</body>
+.tableGen tr {
+border-bottom: 1px solid #ccc;
+padding: 8px;
+}
+.tableGen tr:first-child td {
+background-color: #EEE;
+border-bottom: 1px solid #ccc;
+font-weight: bold;
+padding: 8px;
+text-align: left;
+}
+.tableGen tr td {
+border-bottom: 1px solid #ccc;
+padding: 8px;
+text-align: left;
+}
+</style>
+</div>
+
+			</div>
+		</div>
+	</body>
+	<script language="javascript">
+		function createTable() {
+		    // Get the data
+			var excelData = document.getElementById('csv').value;
+		
+		    // split into rows
+		    excelRow = excelData.split(String.fromCharCode(10));
+		    // split rows into columns
+		    for (i=0; i<excelRow.length; i++) {
+		        excelRow[i] = excelRow[i].split(String.fromCharCode(9));
+		    }
+		
+			// start to create the HTML table
+			var myTable = document.createElement("table");
+			myTable.className = "tableGen";
+			var myTbody = document.createElement("tbody");
+		
+			// Loop over the rows
+		    for (i=0; i<excelRow.length - 1; i++) {
+				// create a row in the HTML table
+				var myRow = document.createElement("tr");
+		
+				// Loop over the columns and add TD to the TR
+				for (j=0; j<excelRow[i].length; j++) {
+					// Loop over the row columns
+					if (excelRow[i][j].length != 0) {
+							var myCell = document.createElement("td");
+							myCell.innerHTML = excelRow[i][j];
+		            }
+					myRow.appendChild(myCell);
+				}
+				myTbody.appendChild(myRow);
+			}
+				myTable.appendChild(myTbody);
+		    document.getElementById('tableWrapper').appendChild(myTable);
+			var output = document.getElementById("tableWrapper").innerHTML;
+			document.getElementById("output").value = output;
+		}
+		
+		
+	</script>
 </html>
