@@ -152,8 +152,10 @@ text-align: left;
 			// start to create the HTML table
 			var myTable = document.createElement("table");
 			myTable.className = "tableGen";
+			myTable.insertAdjacentHTML('beforeend', '&#13;');
 			var myTbody = document.createElement("tbody");
-		
+			myTbody.insertAdjacentHTML('beforeend', '&#13;');
+	
 			// Loop over the rows
 		    for (i=0; i<excelRow.length; i++) {
 				// create a row in the HTML table
@@ -169,6 +171,8 @@ text-align: left;
 					myRow.appendChild(myCell);
 				}
 				myTbody.appendChild(myRow);
+				myTbody.insertAdjacentHTML('beforeend', '&#13;&#13;');
+
 			}
 				myTable.appendChild(myTbody);
 		    
