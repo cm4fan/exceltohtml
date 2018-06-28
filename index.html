@@ -15,7 +15,7 @@
 		padding: 10px;
 		}
 		
-		.generateButton {
+		.generateButton, .refreshButton {
 		margin-bottom: 30px;
 		padding: 10px;
 		font-size: 16px;		
@@ -61,6 +61,8 @@
 				<h3>3. Скопируйте код и вставьте в админку в режиме HTML</h3>
 				<textarea placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
 				</textarea>
+				<input type="button" class="refreshButton" value="Обновить" onclick="refreshTable()">
+
 				<div id="tableContainer">
 <style>
 #tableWrapper {
@@ -106,7 +108,6 @@ color: #0a7dac !important;
 font-weight: bold !important;
 }
 .tableGen tr td {
-border-bottom: 1px solid #ccc;
 padding: 5px;
 text-align: left;
 }
@@ -161,6 +162,17 @@ text-align: left;
 		    document.getElementById('tableWrapper').appendChild(myTable);
 			var output = document.getElementById("tableContainer").innerHTML;
 			document.getElementById("output").value = output;
+			
+
+			
+			
 		}
+		
+		
+		function refreshTable() {
+			var newData = document.getElementById("output").value;
+			document.getElementById('tableContainer').innerHTML = newData;
+			console.log(newData);
+			}
 	</script>
 </html>
