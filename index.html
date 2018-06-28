@@ -59,10 +59,8 @@
 			</div>
 			<div class="result">
 				<h3>3. Скопируйте код и вставьте в админку в режиме HTML</h3>
-				<textarea placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
+				<textarea onkeyup="refreshTable()" placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
 				</textarea>
-				<input type="button" class="refreshButton" value="Обновить" onclick="refreshTable()">
-
 				<div id="tableContainer">
 <style>
 #tableWrapper {
