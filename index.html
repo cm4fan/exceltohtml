@@ -33,7 +33,7 @@
 		
 		.note {
 			font-size: 12px;
-			margin: 0 0 20px;
+			margin: 0 0 10px;
 			color: #cc0000;
 		}
 		
@@ -58,7 +58,7 @@
 		<div class="wrapper">
 			<div class="main">
 				<h3>1. Вставьте из Гугл Таблицы или Экселя</h3>
-				<div class="note">Пожалуйста, не оставляйте пустые ячейки и переносы строк</div>
+				<div class="note">Этот редактор пока подходит для простых таблиц на 3-4 столбца. Пожалуйста, не оставляйте пустые ячейки и переносы строк</div>
 				<textarea id="csv" style="width: 100%; height: 300px"></textarea>
 				<br/>
 				<input type="button" class="generateButton" value="2. Сгенерировать код таблицы" onclick="createTable()">
@@ -68,9 +68,9 @@
 				<details class="helpNotes">
   <summary>Помощь в форматировании</summary>
   <p> - если редактировать код в этом поле, таблица снизу обновляется автоматически</p>
-  <p> - используйте классы hlDeepBlue, hlBlue, hlLightBlue и hlOrange для раскраски строк. Например, <b>&#x3C;tr class=&#x22;hlDeepBlue&#x22;&#x3E;</b></p>
+  <p> - хотите покрасить строку другим цветом? Ищите <b>&#x3C;tr&#x3E;</b> и меняйте на <b>&#x3C;tr class=&#x22;hlDeepBlue&#x22;&#x3E;</b> (или hlBlue, hlLightBlue и hlOrange)</p>
 </details>
-				<textarea onkeyup="refreshTable()" placeholder="Здесь появится HTML код" style="width: 100%; height: 600px" id="output"></textarea>
+				<textarea onkeyup="refreshTable()" placeholder="Здесь появится HTML код" style="width: 100%; height: 500px" id="output"></textarea>
 				</textarea>
 				<div id="tableContainer">
 <style>
